@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 15
+VisualStudioVersion = 15.0.28307.960
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Thearding", "Thearding\Thearding.csproj", "{97CF7F52-872E-4BC9-8F91-F38E94BDD1B5}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UnitTestThearding", "UnitTestThearding\UnitTestThearding.csproj", "{CB6131F7-5C76-4390-87C7-7B5B70FBAA87}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{97CF7F52-872E-4BC9-8F91-F38E94BDD1B5}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{97CF7F52-872E-4BC9-8F91-F38E94BDD1B5}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{97CF7F52-872E-4BC9-8F91-F38E94BDD1B5}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{97CF7F52-872E-4BC9-8F91-F38E94BDD1B5}.Release|Any CPU.Build.0 = Release|Any CPU
+		{CB6131F7-5C76-4390-87C7-7B5B70FBAA87}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{CB6131F7-5C76-4390-87C7-7B5B70FBAA87}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{CB6131F7-5C76-4390-87C7-7B5B70FBAA87}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{CB6131F7-5C76-4390-87C7-7B5B70FBAA87}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {1A869D8F-B705-40C3-8600-968A08064CB2}
+	EndGlobalSection
+EndGlobal

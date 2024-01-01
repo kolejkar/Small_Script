@@ -1,0 +1,7 @@
+D:\source\repos\Thearding\Thearding\bin\Debug\Thearding.exe.config
+D:\source\repos\Thearding\Thearding\bin\Debug\Thearding.exe
+D:\source\repos\Thearding\Thearding\bin\Debug\Thearding.pdb
+D:\source\repos\Thearding\Thearding\obj\Debug\Thearding.csproj.CoreCompileInputs.cache
+D:\source\repos\Thearding\Thearding\obj\Debug\Thearding.exe
+D:\source\repos\Thearding\Thearding\obj\Debug\Thearding.pdb
+D:\source\repos\Thearding\Thearding\obj\Debug\Thearding.csprojAssemblyReference.cache
