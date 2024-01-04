@@ -50,13 +50,12 @@ EXIT
             Assert.NotNull(result);
         }
 
-        //if ==
-
-        [Fact]
-        public void Schould_check_compare() // "=="
+        [Theory]
+        [MemberData(nameof(CompareData))]
+        public void Schould_check_compare(string[] words)
         {
             //Arrange
-            string[] words = { "FUNC", "menu", "VAR", "opcja", "SET", "opcja", "1", "IF", "opcja", "==", "1", "exit", "MOVE", "menu", "FUNC", "exit", "EXIT" };
+            //string[] words = { "FUNC", "menu", "VAR", "opcja", "SET", "opcja", "1", "IF", "opcja", "==", "1", "exit", "MOVE", "menu", "FUNC", "exit", "EXIT" };
             List<Varible> varibles = new List<Varible>();
             Varible varible = new Varible();
             varible.name = "opcja";
@@ -77,35 +76,6 @@ EXIT
             //Assert
             Assert.Equal(Import_Result.OK, result);
         }
-
-        //if > or <=
-        [Fact]
-        public void Schould_check_compare_1() // "> or <="
-        {
-            //Arrange
-            string[] words = { "FUNC", "menu", "VAR", "opcja", "SET", "opcja", "1", "IF", "opcja", "<=", "1", "exit", "MOVE", "menu", "FUNC", "exit", "EXIT" };
-            List<Varible> varibles = new List<Varible>();
-            Varible varible = new Varible();
-            varible.name = "opcja";
-            varible.value = "1";
-            varibles.Add(varible);
-
-            List<Funkcja> funkcjas = new List<Funkcja>();
-            Funkcja funkcja = new Funkcja();
-            funkcja.name = "exit";
-            funkcja.jump_to = 15;
-            funkcjas.Add(funkcja);
-
-            Cpu_If cpu_If = new Cpu_If(varibles, funkcjas, words, 7);
-
-            //Act
-            var result = cpu_If.Check();
-
-            //Assert
-            Assert.Equal(Import_Result.OK, result);
-        }
-        //if < or >=
-        //if !=
 
         [Fact]
         public void Schould_get_new_function_varible()
@@ -165,5 +135,16 @@ EXIT
             Assert.NotEqual(pos, new_poz);
             Assert.Equal(15, new_poz);
         }
+
+        public static IEnumerable<object[]> CompareData =>
+        new List<object[]>
+        {
+            new object[] { new string[] { "FUNC", "menu", "VAR", "opcja", "SET", "opcja", "1", "IF", "opcja", "==", "1", "exit", "MOVE", "menu", "FUNC", "exit", "EXIT" } },
+            new object[] { new string[] { "FUNC", "menu", "VAR", "opcja", "SET", "opcja", "1", "IF", "opcja", "<=", "1", "exit", "MOVE", "menu", "FUNC", "exit", "EXIT" } },
+            new object[] { new string[] { "FUNC", "menu", "VAR", "opcja", "SET", "opcja", "2", "IF", "opcja", ">", "1", "exit", "MOVE", "menu", "FUNC", "exit", "EXIT" } },
+            new object[] { new string[] { "FUNC", "menu", "VAR", "opcja", "SET", "opcja", "2", "IF", "opcja", ">=", "1", "exit", "MOVE", "menu", "FUNC", "exit", "EXIT" } },
+            new object[] { new string[] { "FUNC", "menu", "VAR", "opcja", "SET", "opcja", "1", "IF", "opcja", "<", "2", "exit", "MOVE", "menu", "FUNC", "exit", "EXIT" } },
+            new object[] { new string[] { "FUNC", "menu", "VAR", "opcja", "SET", "opcja", "1", "IF", "opcja", "!=", "2", "exit", "MOVE", "menu", "FUNC", "exit", "EXIT" } }
+        };
     }
 }
