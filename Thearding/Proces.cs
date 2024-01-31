@@ -171,7 +171,7 @@ namespace Thearding
             }
             try
             {
-                float sum = float.Parse(var1.value) + float.Parse(var2.value);
+                float sum = var1.GetFloatValue() + var2.GetFloatValue();
                 var1.value = sum.ToString();
             }
             catch (FormatException)
@@ -206,7 +206,7 @@ namespace Thearding
             }
             try
             {
-                float sum = float.Parse(var1.value) - float.Parse(var2.value);
+                float sum = var1.GetFloatValue() - var2.GetFloatValue();
                 var1.value = sum.ToString();
             }
             catch (FormatException)
@@ -241,7 +241,7 @@ namespace Thearding
             }
             try
             {
-                float sum = float.Parse(var1.value) / float.Parse(var2.value);
+                float sum = var1.GetFloatValue() / var2.GetFloatValue();
                 var1.value = sum.ToString();
             }
             catch (FormatException)
@@ -281,7 +281,7 @@ namespace Thearding
             }
             try
             {
-                float sum = float.Parse(var1.value) * float.Parse(var2.value);
+                float sum = var1.GetFloatValue() * var2.GetFloatValue();
                 var1.value = sum.ToString();
             }
             catch (FormatException)
@@ -334,6 +334,46 @@ namespace Thearding
             return false;
         }
 
+        private Import_Result ListLogic(string name, string instruction, string argument)
+        {
+            if (varibles.Exists(v => v.name == name))
+            {
+                ListVaribles listVaribles = varibles.Find(v => v.name == name) as ListVaribles;
+                if (argument == "ALL" && instruction == "CLEAR")
+                {
+                    Varible var = new Varible();
+                    var.name = argument;
+                    listVaribles.OprtationVarible(instruction, var);
+                }
+                else
+                {
+                    if (varibles.Exists(v => v.name == argument))
+                    {
+                        listVaribles.OprtationVarible(instruction, varibles.Find(v => v.name == name));
+                    }
+                    else
+                    {
+                        try
+                        {
+                            int id = int.Parse(argument);
+                            varibles.Add(listVaribles.OprtationInt(instruction, id));
+                        }
+                        catch (FormatException)
+                        {
+                            FormatWarning();
+                            return Import_Result.BadResult;
+                        }
+                    }
+                }
+                return Import_Result.OK;
+            }
+            else
+            {
+                ArgumentError();
+                return Import_Result.BadResult;
+            }
+        }
+
         public Import_Result RunLibraryFunction(string FuncName)
         {
             if (!CheckFunction(FuncName))
@@ -342,6 +382,18 @@ namespace Thearding
             }
             while (words.Length != iter)
             {
+                if (words[iter] == "LIST") //list logic operations
+                {
+                    if (words[++iter] == "CREATE")
+                    {
+                        ListVaribles listVaribles = new ListVaribles(words[++iter]);
+                        varibles.Add(listVaribles);
+                    }
+                    else
+                    {
+                        ListLogic(words[iter], words[++iter], words[++iter]);
+                    }
+                }
                 if (words[iter] == "PRINT") //write in console
                 {
                     PrintFunction();

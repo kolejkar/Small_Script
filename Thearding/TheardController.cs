@@ -32,5 +32,10 @@ namespace Thearding
         {
             Console.WriteLine(String.Format("Warrning at word {0}. Varilbe {1} must be number.", iter, words[iter]));
         }
+
+        public void ArgumentError()
+        {
+            Console.WriteLine(String.Format("error at word {0}. Invalid argument {1}.", iter, words[iter]));
+        }
     }
 }

@@ -47,6 +47,7 @@
     <Compile Include="Funkcja.cs" />
     <Compile Include="Import.cs" />
     <Compile Include="Library.cs" />
+    <Compile Include="ListVaribles.cs" />
     <Compile Include="Proces.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

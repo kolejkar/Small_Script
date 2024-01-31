@@ -15,11 +15,16 @@ namespace Thearding
         {
             name = varible.name;
             value = varible.value;
-
         }
 
         public Varible()
         {
+        }
+
+        public float GetFloatValue()
+        {
+            float sum = float.Parse(value);
+            return sum;
         }
     }
 }
